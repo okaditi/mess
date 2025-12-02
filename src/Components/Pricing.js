@@ -46,7 +46,7 @@ const Pricing = () => {
         backgroundColor: "#0f0f0f",
         color: "#ffffff",
         textAlign: "center",
-        marginTop: "10px" // ensures it clears an absolute navbar of ~90px
+        marginTop: "10px" 
       }}
       variants={containerVariants}
       initial="hidden"

@@ -6,7 +6,6 @@ import Testimonial from "./Components/Testimonial.js";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import Pricing from "./Components/Pricing";
-// import Servicing from "./Components/Servicing";
 
 function App() {
   return (
