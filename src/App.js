@@ -1,23 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./Components/Home";
+import About from "./Components/About";
+import Work from "./Components/Work";
+import Testimonial from "./Components/Testimonial.js";
+import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
+import Pricing from "./Components/Pricing";
+// import Servicing from "./Components/Servicing";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Home />
+      <About />
+      <div
+        style={{
+          height: "1px",
+          width: "100%",
+          background:
+            "linear-gradient(to right, transparent, #444, transparent)",
+          margin: "60px 0",
+        }}
+      />
+      <Work />
+      <div
+        style={{
+          height: "1px",
+          width: "100%",
+          background:
+            "linear-gradient(to right, transparent, #444, transparent)",
+          margin: "60px 0",
+        }}
+      />
+      <Pricing />
+      <div
+        style={{
+          height: "1px",
+          width: "100%",
+          background:
+            "linear-gradient(to right, transparent, #444, transparent)",
+          margin: "60px 0",
+        }}
+      />
+      <Testimonial />
+      <div
+        style={{
+          height: "1px",
+          width: "100%",
+          background:
+            "linear-gradient(to right, transparent, #444, transparent)",
+          margin: "60px 0",
+        }}
+      />
+      <Contact />
+      <div
+        style={{
+          height: "1px",
+          width: "100%",
+          background:
+            "linear-gradient(to right, transparent, #444, transparent)",
+          margin: "60px 0",
+        }}
+      />
+      <Footer />
     </div>
   );
 }
