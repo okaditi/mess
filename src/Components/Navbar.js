@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../Assets/Logo.svg";
 import { HiOutlineBars3 } from "react-icons/hi2";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../Contexts/AuthContext";
 
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -21,26 +23,35 @@ import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const menuItems = [
-    { text: "Home", icon: <HomeIcon sx={{ color: "#fff" }} /> },
-    { text: "About", icon: <InfoIcon sx={{ color: "#fff" }} /> },
-    { text: "Reviews", icon: <CommentRoundedIcon sx={{ color: "#fff" }} /> },
-    { text: "Contact", icon: <PhoneRoundedIcon sx={{ color: "#fff" }} /> },
-    { text: "Cart", icon: <ShoppingCartRoundedIcon sx={{ color: "#fff" }} /> },
+    { text: "Home", to: "/", icon: <HomeIcon sx={{ color: "#fff" }} /> },
+    { text: "About", to: "/#about", icon: <InfoIcon sx={{ color: "#fff" }} /> },
+    { text: "Reviews", to: "/#reviews", icon: <CommentRoundedIcon sx={{ color: "#fff" }} /> },
+    { text: "Contact", to: "/#contact", icon: <PhoneRoundedIcon sx={{ color: "#fff" }} /> },
+    { text: "Cart", to: "/cart", icon: <ShoppingCartRoundedIcon sx={{ color: "#fff" }} /> },
   ];
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 80);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 800);
+    window.addEventListener("resize", onResize, { passive: true });
+    onResize();
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   const navStyle = {
     width: "100%",
-    padding: scrolled ? "12px 30px" : "18px 32px",
+    padding: scrolled ? "12px 20px" : "18px 32px",
     background: scrolled ? "rgba(0,0,0,0.55)" : "transparent",
     backdropFilter: scrolled ? "blur(8px)" : "none",
     WebkitBackdropFilter: scrolled ? "blur(8px)" : "none",
@@ -54,6 +65,7 @@ const Navbar = () => {
     zIndex: 1000,
     transition: "0.25s ease",
     boxShadow: scrolled ? "0 4px 18px rgba(0,0,0,0.3)" : "none",
+    fontFamily: "Montserrat, sans-serif",
   };
 
   const linkStyle = {
@@ -72,73 +84,104 @@ const Navbar = () => {
     cursor: "pointer",
     fontWeight: 600,
     fontSize: "1rem",
-    transition: "transform 150ms ease",
   };
 
   return (
-    <nav style={navStyle}>
+    <nav style={navStyle} role="navigation" aria-label="Main navigation">
       <div style={{ display: "flex", alignItems: "center" }}>
-        <img
-          src={Logo}
-          alt="Bittu's Tiffin Logo"
-          style={{
-            height: 42,
-            filter: "invert(1)",
-          }}
-        />
+        <Link to="/" style={{ display: "inline-flex", alignItems: "center" }}>
+          <img src={Logo} alt="Bittu's Tiffin Logo" style={{ height: 42, filter: "invert(1)" }} />
+        </Link>
       </div>
 
-      <div
-        className="navbar-links-container"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "28px",
-          fontSize: "1rem",
-          fontWeight: 500,
-          fontFamily: "Montserrat, sans-serif"
-        }}
-      >
-        <a href="#home" style={linkStyle}>Home</a>
-        <a href="#about" style={linkStyle}>About</a>
-        <a href="#reviews" style={linkStyle}>Reviews</a>
-        <a href="#pricing" style={linkStyle}>Pricing</a>
+      {/* Desktop links */}
+      {!isMobile && (
+        <div className="navbar-links-container" style={{ display: "flex", alignItems: "center", gap: "28px", fontSize: "1rem", fontWeight: 500 }}>
+          <Link to="/" style={linkStyle}>Home</Link>
+          <a href="#about" style={linkStyle}>About</a>
+          <a href="#reviews" style={linkStyle}>Reviews</a>
+          <a href="#pricing" style={linkStyle}>Pricing</a>
 
-        <button style={buttonStyle}>Book Trial</button>
-      </div>
+          {user ? (
+            <>
+              <Link to="/dashboard" style={linkStyle}>Dashboard</Link>
+              <button style={buttonStyle} onClick={() => { logout(); navigate("/"); }}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" style={linkStyle}>Login</Link>
+              <Link to="/book-trial"><button style={buttonStyle}>Book Trial</button></Link>
+            </>
+          )}
+        </div>
+      )}
 
-      <div
-        className="navbar-menu-container"
-        style={{
-          display: "none",
-          fontSize: 32,
-          cursor: "pointer",
-          color: "#fff",
-        }}
-      >
-        <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
-      </div>
+      {/* Mobile hamburger */}
+      {isMobile && (
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          {user ? (
+            <button
+              onClick={() => navigate("/dashboard")}
+              style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.12)", color: "#fff", padding: "8px 12px", borderRadius: 8 }}
+            >
+              Dashboard
+            </button>
+          ) : (
+            <Link to="/login" style={{ color: "#fff", textDecoration: "none", marginRight: 6 }}>Login</Link>
+          )}
+
+          <div style={{ fontSize: 28, cursor: "pointer", color: "#fff" }} onClick={() => setOpenMenu(true)} aria-label="Open menu">
+            <HiOutlineBars3 />
+          </div>
+        </div>
+      )}
 
       <Drawer
         open={openMenu}
         onClose={() => setOpenMenu(false)}
         anchor="right"
         PaperProps={{
-          sx: { background: "rgba(0,0,0,0.9)", color: "#fff", backdropFilter: "blur(6px)" },
+          sx: { background: "rgba(0,0,0,0.95)", color: "#fff", backdropFilter: "blur(6px)" },
         }}
       >
-        <Box sx={{ width: 260 }} role="presentation" onClick={() => setOpenMenu(false)}>
+        <Box sx={{ width: 280 }} role="presentation" onClick={() => setOpenMenu(false)}>
           <List>
             {menuItems.map((item) => (
               <ListItem key={item.text} disablePadding>
-                <ListItemButton>
+                <ListItemButton component={Link} to={item.to}>
                   <ListItemIcon sx={{ color: "#fff" }}>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.text} sx={{ color: "#fff" }} />
                 </ListItemButton>
               </ListItem>
             ))}
+
+            <Divider sx={{ borderColor: "rgba(255,255,255,0.12)" }} />
+
+            <ListItem disablePadding>
+              <ListItemButton component={Link} to="/book-trial">
+                <ListItemText primary="Book Trial" sx={{ color: "#fff" }} />
+              </ListItemButton>
+            </ListItem>
+
+            <Divider sx={{ borderColor: "rgba(255,255,255,0.06)" }} />
+
+            {user ? (
+              <ListItem disablePadding>
+                <ListItemButton onClick={() => { logout(); navigate("/"); }}>
+                  <ListItemText primary="Logout" sx={{ color: "#fff" }} />
+                </ListItemButton>
+              </ListItem>
+            ) : (
+              <ListItem disablePadding>
+                <ListItemButton component={Link} to="/login">
+                  <ListItemText primary="Login" sx={{ color: "#fff" }} />
+                </ListItemButton>
+              </ListItem>
+            )}
+
           </List>
-          <Divider sx={{ borderColor: "rgba(255,255,255,0.2)" }} />
         </Box>
       </Drawer>
     </nav>
