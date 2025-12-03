@@ -18,7 +18,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
-import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -31,8 +30,7 @@ const Navbar = () => {
     { text: "Home", to: "/", icon: <HomeIcon sx={{ color: "#fff" }} /> },
     { text: "About", to: "/#about", icon: <InfoIcon sx={{ color: "#fff" }} /> },
     { text: "Reviews", to: "/#reviews", icon: <CommentRoundedIcon sx={{ color: "#fff" }} /> },
-    { text: "Contact", to: "/#contact", icon: <PhoneRoundedIcon sx={{ color: "#fff" }} /> },
-    { text: "Cart", to: "/cart", icon: <ShoppingCartRoundedIcon sx={{ color: "#fff" }} /> },
+    { text: "Contact", to: "/#contact", icon: <PhoneRoundedIcon sx={{ color: "#fff" }} /> }
   ];
 
   useEffect(() => {
