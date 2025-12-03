@@ -94,7 +94,8 @@ const Pricing = () => {
           <motion.div
             key={i}
             whileHover={{
-              boxShadow: "0 0 30px rgba(255, 255, 255, 0.55)",
+              scale: 1.06,
+              boxShadow: "0 0 30px rgb(255, 138, 80)",
             }}
             style={{
               width: "320px",
@@ -181,7 +182,7 @@ const Pricing = () => {
 
             <motion.button
               whileHover={{
-                boxShadow: "0 0 18px rgba(255, 255, 255, 0.77)",
+                boxShadow: "0 0 5px rgb(255, 138, 80)",
                 color: "#ffffff",
               }}
               whileTap={{}}
