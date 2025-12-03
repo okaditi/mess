@@ -67,6 +67,8 @@ const Home = () => {
   };
 
   return (
+    <section
+    id="Home">
     <div
       style={{ width: "100%", height: "100vh", position: "relative" }}
     >
@@ -247,6 +249,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

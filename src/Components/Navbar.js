@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const menuItems = [
     { text: "Home", to: "/", icon: <HomeIcon sx={{ color: "#fff" }} /> },
-    { text: "About", to: "/#about", icon: <InfoIcon sx={{ color: "#fff" }} /> },
+    { text: "About", to: "/#About", icon: <InfoIcon sx={{ color: "#fff" }} /> },
     { text: "Reviews", to: "/#reviews", icon: <CommentRoundedIcon sx={{ color: "#fff" }} /> },
     { text: "Contact", to: "/#contact", icon: <PhoneRoundedIcon sx={{ color: "#fff" }} /> }
   ];
@@ -94,9 +94,9 @@ const Navbar = () => {
 
       {!isMobile && (
         <div className="navbar-links-container" style={{ display: "flex", alignItems: "center", gap: "28px", fontSize: "1rem", fontWeight: 500 }}>
-          <Link to="/" style={linkStyle}>Home</Link>
-          <a href="#about" style={linkStyle}>About</a>
-          <a href="#reviews" style={linkStyle}>Reviews</a>
+          {/* <Link to="#Home" style={linkStyle}>Home</Link> */}
+          <a href="#Home" style={linkStyle}>Home</a>
+          <a href="#About" style={linkStyle}>About</a>
           <a href="#pricing" style={linkStyle}>Pricing</a>
 
           {user ? (
