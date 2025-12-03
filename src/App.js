@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./Contexts/AuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
+
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import About from "./Components/About";
@@ -11,6 +12,7 @@ import Testimonial from "./Components/Testimonial";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import Pricing from "./Components/Pricing";
+import Offers from "./Components/Offers";
 
 import Login from "./Pages/Login";
 import BookTrial from "./Pages/BookTrial";
@@ -41,6 +43,16 @@ function App() {
                   }}
                 />
                 <Work />
+                <div
+                  style={{
+                    height: "1px",
+                    width: "100%",
+                    background:
+                      "linear-gradient(to right, transparent, #444, transparent)",
+                    margin: "60px 0",
+                  }}
+                />
+                <Offers />
                 <div
                   style={{
                     height: "1px",

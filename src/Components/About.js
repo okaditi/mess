@@ -23,13 +23,7 @@ const About = () => {
           We prepare fresh, wholesome meals daily, using quality ingredients and traditional recipes. Whether you’re a student, working professional, or a busy family, our goal is to provide convenient, nutritious meals without compromising taste.
         </p>
         <p className="primary-text" style={{fontSize: "1.2rem", color: "white"}}>
-          We offer: <br />
-          • Daily lunch & dinner delivery <br />
-          • Veg & Non-veg options <br />
-          • Customizable dinner choices <br />
-          • Flexible serving sizes <br />
-          • Monthly menu updates <br />
-          • Fast delivery to all apartments, offices & colleges along Kelambakkam–Vandalur Road <br />
+          We offer freshly prepared daily lunch and dinner delivery with a variety of vegetarian and non-vegetarian options to suit every preference. Our dinner plans are fully customizable, allowing you to choose dishes that best match your taste and dietary needs. You can also select flexible serving sizes, making it easy to order for individuals, families, or groups. With a menu that is updated every month, you’ll always enjoy new and exciting meals. We provide fast, reliable delivery to all apartments, offices, and colleges ensuring your food arrives hot and on time.
         </p>
         <div className="about-buttons-container">
           <button className="secondary-button">Book Trial</button>
