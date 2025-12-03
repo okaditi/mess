@@ -38,7 +38,7 @@ const Offers = () => {
         alt="Roadmap"
         style={{
           width: "100%",
-          maxWidth: "900px",
+          maxWidth: "800px",
           height: "auto",
           zIndex: 2,
           display: "block"
