@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import RoadMap from "../Assets/roadmap.png";
 import Pic from "../Assets/prices.png";
 import Background from "../Assets/offer-back.png";
 
 const Offers = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div
       style={{
@@ -11,13 +23,14 @@ const Offers = () => {
         marginBottom: "100px",
         width: "100%",
         display: "flex",
+        flexDirection: isMobile ? "column" : "row",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: isMobile ? "center" : "center",
+        gap: isMobile ? "40px" : "0px",
         padding: "20px",
         position: "relative",
         boxSizing: "border-box",
-        flexWrap: "nowrap",      
-        overflow: "hidden"      
+        overflow: "hidden"
       }}
     >
       <img
@@ -28,7 +41,6 @@ const Offers = () => {
           maxWidth: "900px",
           height: "auto",
           zIndex: 2,
-          flexShrink: 1,      
           display: "block"
         }}
       />
@@ -38,8 +50,6 @@ const Offers = () => {
           position: "relative",
           width: "100%",
           maxWidth: "900px",
-          flexShrink: 1,        
-          boxSizing: "border-box"
         }}
       >
         <img
@@ -47,13 +57,12 @@ const Offers = () => {
           alt="Background"
           style={{
             position: "absolute",
-            right: "0px",
+            right: isMobile ? "0px" : "0px",
             top: 0,
-            width: "31%",
+            width: isMobile ? "60%" : "31%",
             height: "100%",
             objectFit: "cover",
             zIndex: 0,
-            marginTop: "0px",
             pointerEvents: "none",
             userSelect: "none"
           }}

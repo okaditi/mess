@@ -94,7 +94,6 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Desktop links */}
       {!isMobile && (
         <div className="navbar-links-container" style={{ display: "flex", alignItems: "center", gap: "28px", fontSize: "1rem", fontWeight: 500 }}>
           <Link to="/" style={linkStyle}>Home</Link>
@@ -118,7 +117,6 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Mobile hamburger */}
       {isMobile && (
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           {user ? (
