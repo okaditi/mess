@@ -8,13 +8,16 @@ const Offers = () => {
     <div
       style={{
         marginTop: "100px",
-        marginBottom: "190px",
+        marginBottom: "100px",
         width: "100%",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         padding: "20px",
         position: "relative",
+        boxSizing: "border-box",
+        flexWrap: "nowrap",      
+        overflow: "hidden"      
       }}
     >
       <img
@@ -25,6 +28,8 @@ const Offers = () => {
           maxWidth: "900px",
           height: "auto",
           zIndex: 2,
+          flexShrink: 1,      
+          display: "block"
         }}
       />
 
@@ -33,22 +38,24 @@ const Offers = () => {
           position: "relative",
           width: "100%",
           maxWidth: "900px",
+          flexShrink: 1,        
+          boxSizing: "border-box"
         }}
       >
-
         <img
           src={Background}
           alt="Background"
           style={{
             position: "absolute",
-            right: "-90px",
+            right: "0px",
             top: 0,
-            width: "40%",
-            height: "130%",
+            width: "31%",
+            height: "100%",
             objectFit: "cover",
             zIndex: 0,
-            marginTop: "-95px",
-            marginBottom: "200px",
+            marginTop: "0px",
+            pointerEvents: "none",
+            userSelect: "none"
           }}
         />
 
@@ -60,6 +67,7 @@ const Offers = () => {
             height: "auto",
             position: "relative",
             zIndex: 2,
+            display: "block"
           }}
         />
       </div>
