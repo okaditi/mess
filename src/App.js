@@ -79,7 +79,7 @@ function App() {
                     width: "100%",
                     background:
                       "linear-gradient(to right, transparent, #444, transparent)",
-                    margin: "60px 0",
+                    margin: "0px 0",
                   }}
                 />
                 <Contact />
@@ -89,7 +89,7 @@ function App() {
                     width: "100%",
                     background:
                       "linear-gradient(to right, transparent, #444, transparent)",
-                    margin: "60px 0",
+                    margin: "0px 0",
                   }}
                 />
                 <Footer />
