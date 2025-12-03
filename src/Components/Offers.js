@@ -7,7 +7,7 @@ const Offers = () => {
   return (
     <div
       style={{
-        marginTop: "190px",
+        marginTop: "100px",
         marginBottom: "190px",
         width: "100%",
         display: "flex",
