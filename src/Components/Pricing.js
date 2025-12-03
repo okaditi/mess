@@ -1,11 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Background from "../Assets/prices-background.jpg";
 
 const plans = [
   {
     name: "Veg - 1 Meal/Day",
-    price: "₹2799 / month",
+    price: "₹2796 / month",
     features: [
       "Lunch or Dinner",
       "Fresh Veg Meal Daily",
@@ -38,22 +37,9 @@ const plans = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12 },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 },
-};
-
 const Pricing = () => {
   return (
-    <motion.section
+    <section
       id="pricing"
       style={{
         position: "relative",
@@ -64,18 +50,12 @@ const Pricing = () => {
         textAlign: "center",
         marginTop: "10px",
       }}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
     >
       <p className="primary-subheading" style={{ marginBottom: "8px" }}>
         Pricing
       </p>
 
-      <motion.h2
-        initial={{ y: -20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+      <h2
         style={{
           fontSize: "2.4rem",
           fontWeight: 700,
@@ -84,11 +64,9 @@ const Pricing = () => {
         }}
       >
         Flexible & Affordable Pricing
-      </motion.h2>
+      </h2>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+      <p
         style={{
           color: "#cfcfcf",
           marginBottom: "48px",
@@ -101,9 +79,9 @@ const Pricing = () => {
         Choose a plan that fits your daily meal needs. Fresh, homestyle food
         delivered every day — hygienic packaging, reliable timings, and flexible
         plans.
-      </motion.p>
+      </p>
 
-      <motion.div
+      <div
         style={{
           display: "flex",
           flexWrap: "wrap",
@@ -111,29 +89,18 @@ const Pricing = () => {
           gap: "28px",
           alignItems: "stretch",
         }}
-        variants={containerVariants}
       >
         {plans.map((plan, i) => (
           <motion.div
             key={i}
-            variants={itemVariants}
             whileHover={{
-              scale: 1.06,
-              y: -8,
-              boxShadow: "0 0 30px rgba(255,153,90,0.55)",
+              boxShadow: "0 0 30px rgba(255, 255, 255, 0.55)",
             }}
             style={{
               width: "320px",
               padding: "36px 22px",
               backgroundColor: plan.recommended ? "#1e1e1e" : "#161616",
               color: "#fff",
-              // borderRadius: "14px",
-              // border: plan.recommended
-              //   ? "2px solid rgba(255,112,67,0.95)"
-              //   : "1px solid #222",
-              // boxShadow: plan.recommended
-              //   ? "0 20px 50px rgba(255,112,67,0.08)"
-              //   : "0 8px 30px rgba(0,0,0,0.6)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -141,9 +108,7 @@ const Pricing = () => {
             }}
           >
             {plan.recommended && (
-              <motion.div
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
+              <div
                 style={{
                   color: "#FF8A50",
                   fontWeight: 700,
@@ -152,7 +117,7 @@ const Pricing = () => {
                 }}
               >
                 ⭐ Most Popular
-              </motion.div>
+              </div>
             )}
 
             <div>
@@ -172,7 +137,7 @@ const Pricing = () => {
                   fontSize: "2rem",
                   fontWeight: 800,
                   marginBottom: "18px",
-                  color: "#FF9B5A",
+                  color: "#faf9f9ff",
                   letterSpacing: "0.4px",
                 }}
               >
@@ -202,7 +167,7 @@ const Pricing = () => {
                     <span
                       style={{
                         marginRight: "10px",
-                        color: "#FF9B5A",
+                        color: "#fffefdc8",
                         fontSize: "1.05rem",
                       }}
                     >
@@ -215,8 +180,11 @@ const Pricing = () => {
             </div>
 
             <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{
+                boxShadow: "0 0 18px rgba(255, 255, 255, 0.77)",
+                color: "#ffffff",
+              }}
+              whileTap={{}}
               style={{
                 marginTop: "22px",
                 padding: "12px 20px",
@@ -227,27 +195,26 @@ const Pricing = () => {
                 cursor: "pointer",
                 fontWeight: 700,
                 width: "100%",
+                transition: "box-shadow 0.25s ease",
               }}
             >
               Select Plan
             </motion.button>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+      <p
         style={{
           marginTop: "42px",
           fontSize: "1.05rem",
-          color: "#FFB38A",
+          color: "#ffffffff",
           fontWeight: 700,
         }}
       >
         Pay for 6 months & get ₹3000 OFF!
-      </motion.p>
-    </motion.section>
+      </p>
+    </section>
   );
 };
 
