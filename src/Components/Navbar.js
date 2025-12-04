@@ -101,9 +101,20 @@ const Navbar = () => {
           >
             Home
           </Link>
-
-          <a href="#About" style={linkStyle}>About</a>
-          <a href="#pricing" style={linkStyle}>Pricing</a>
+          <Link
+            to="/"
+            style={linkStyle}
+            onClick={() => window.scrollTo({ top: 870, behavior: "smooth" })}
+          >
+            About
+          </Link>
+          <Link
+            to="/"
+            style={linkStyle}
+            onClick={() => window.scrollTo({ top: 3940, behavior: "smooth" })}
+          >
+            Pricing
+          </Link>
 
 
           {user ? (
