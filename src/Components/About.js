@@ -9,7 +9,8 @@ const About = () => {
     id="About">
 
   
-    <div className="about-section-container">
+    <div className="about-section-container"
+    style={{padding:"60px 0px"}}>
       <div className="about-background-image-container">
         <img src={AboutBackground} alt="" />
       </div>
