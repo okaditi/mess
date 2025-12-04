@@ -94,10 +94,17 @@ const Navbar = () => {
 
       {!isMobile && (
         <div className="navbar-links-container" style={{ display: "flex", alignItems: "center", gap: "28px", fontSize: "1rem", fontWeight: 500 }}>
-          {/* <Link to="#Home" style={linkStyle}>Home</Link> */}
-          <a href="#Home" style={linkStyle}>Home</a>
+          <Link
+            to="/"
+            style={linkStyle}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            Home
+          </Link>
+
           <a href="#About" style={linkStyle}>About</a>
           <a href="#pricing" style={linkStyle}>Pricing</a>
+
 
           {user ? (
             <>
