@@ -101,7 +101,6 @@ const Navbar = () => {
           >
             Home
           </Link>
-          
 
           <a href="#About" style={linkStyle}>About</a>
           <a href="#pricing" style={linkStyle}>Pricing</a>
